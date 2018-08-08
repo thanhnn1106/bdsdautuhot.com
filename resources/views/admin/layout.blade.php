@@ -56,7 +56,12 @@
                     <ul id="side-main-menu" class="side-menu list-unstyled">
                         <li>
                             <a href="{{ route('admin.projects') }}">
-                                <i class="icon-list"></i>Projects
+                                <i class="icon-list"></i>Dự án
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.projects.info') }}">
+                                <i class="icon-list"></i>Thông tin dự án
                             </a>
                         </li>
                     </ul>

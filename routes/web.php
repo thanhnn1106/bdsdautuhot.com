@@ -17,9 +17,13 @@ $router->group([
     'middleware' => 'web',
 ], function ($router) {
     // Do not login
-    $router->get('/home', [
+    $router->get('/', [
         'as' => 'home',
         'uses' => 'HomeController@index'
+    ]);
+    $router->get('/du-an/{slug}', [
+        'as' => 'project',
+        'uses' => 'ProjectController@index'
     ]);
 });
 
@@ -46,6 +50,26 @@ Route::group([
         $router->get('/projects', [
             'as'   => 'projects',
             'uses' => 'ProjectController@index',
+        ]);
+        $router->match(['get', 'post'], 'projects/add', [
+            'as'   => 'projects.add',
+            'uses' => 'ProjectController@add',
+        ]);
+        $router->match(['get', 'post'], 'projects/edit/{projectId}', [
+            'as'   => 'projects.edit',
+            'uses' => 'ProjectController@edit',
+        ]);
+        $router->get('projects/delete/{projectId}', [
+            'as'   => 'projects.delete',
+            'uses' => 'ProjectController@delete',
+        ]);
+        $router->get('projects/info', [
+            'as'   => 'projects.info',
+            'uses' => 'ProjectInfoController@index',
+        ]);
+        $router->get('projects/info/add', [
+            'as'   => 'projects.info.add',
+            'uses' => 'ProjectInfoController@add',
         ]);
     });
 });

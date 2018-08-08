@@ -13,6 +13,26 @@ return [
         'administrator' => 1,
         'manage'        => 2,
     ),
+    'homepage_status' => array(
+        'label' => array(
+            1 => 'Có',
+            0 => 'Không',
+        ),
+        'value' => array(
+            'yes' => 1,
+            'no'  => 0
+        ),
+    ),
+    'menu_status' => array(
+        'label' => array(
+            1 => 'Có',
+            0 => 'Không',
+        ),
+        'value' => array(
+            'yes' => 1,
+            'no'  => 0
+        ),
+    ),
     'user_status' => array(
         'label' => array(
             1 => 'Active',
