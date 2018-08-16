@@ -45,12 +45,47 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Tên dự án</th>
+                                        <th>Thông tin</th>
                                         <th>Trạng thái</th>
                                         <th>Ngày tạo</th>
                                         <th>Ngày cập nhật</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @if ($projectsInfo->count() == 0)
+                                        <tr><td colspan="8" align="center">Data not found</td></tr>
+                                    @else
+                                    <?php $i = 1; ?>
+                                    @foreach($projectsInfo as $project)
+                                    <tr>
+                                        <th scope="row">{{ $i++ }}</th>
+                                        <td>
+                                            @foreach($projectsFilter as $pro)
+                                                @if ($pro->id == $project->project_id)
+                                                {{ $pro->name }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{ $project->title }}</td>
+                                        <td>{{ $project->status }}</td>
+                                        <td>{{ $project->created_at }}</td>
+                                        <td>{{ $project->updated_at }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.projects.info.edit', ['id' => $project->id]) }}" class="btn btn-warning btn-xs">
+                                                Cập nhật
+                                            </a>
+                                            <a href="javascript:void(0);" onclick="return fncDeleteConfirm(this);"
+                                               data-message="Are you sure delete this project?"
+                                               data-url="{{ route('admin.projects.delete', ['id' => $project->id]) }}"
+                                               class="btn btn-danger btn-xs">
+                                               Xoá
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                </tbody>
                             </table>
                         </div>
                     </div>

@@ -33,7 +33,6 @@ class ProjectInfoController extends Controller
 
         if ($request->isMethod('POST')) {
             $dataPost = $request->all();
-
             $rules = $this->_setRules($dataPost);
             // run the validation rules on the inputs from the form
             $validator = Validator::make($dataPost, $rules);
@@ -44,71 +43,64 @@ class ProjectInfoController extends Controller
                             ->withInput();
             }
             $insert = [
-                'name'             => $request->get('name'),
-                'slug'             => str_slug($request->get('name')),
-                'short_name'       => $request->get('short_name'),
-                'cover_photo'      => $request->get('cover_photo'),
-                'logo'             => $request->get('logo'),
-                'investor'         => $request->get('investor'),
-                'instagram'        => $request->get('instagram'),
-                'status'           => $request->get('status'),
-                'is_menu'          => $request->get('is_menu'),
-                'is_show_homepage' => $request->get('is_show_homepage'),
+                'title'      => $request->get('title'),
+                'slug'       => str_slug($request->get('title')),
+                'content'    => $request->get('content'),
+                'ordering'   => $request->get('ordering'),
+                'status'     => $request->get('status'),
+                'project_id' => $request->get('project_id'),
             ];
 
-            Project::insert($insert);
+            ProjectInfo::insert($insert);
 
             $request->session()->flash('success', trans('common.msg_create_success'));
-            return redirect()->route('admin.projects');
+            return redirect()->route('admin.projects.info');
         }
 
         return view('admin.project_info.form', $data);
     }
-    public function edit(Request $request, $projectId)
+    public function edit(Request $request, $projectInfoId)
     {
-        $project = Project::find($projectId);
+        $project = ProjectInfo::find($projectInfoId);
         if ($project === NULL) {
             $request->session()->flash('error', trans('common.msg_data_not_found'));
             return redirect(route('admin.projects'));
         }
 
         $data = array(
-            'actionForm' => route('admin.projects.edit', ['projectId' => $projectId]),
-            'project'   => $project,
-            'title'      => 'Cập nhật',
+            'actionForm'     => route('admin.projects.info.edit', ['projectInfoId' => $projectInfoId]),
+            'projectInfo'    => $project,
+            'project_id'     => $project->project_id,
+            'projectsFilter' => Project::all(),
+            'title'          => 'Cập nhật',
         );
 
         if ($request->isMethod('POST')) {
 
-            $rules = $this->_setRules($request, $projectId);
+            $rules = $this->_setRules($request);
 
             // run the validation rules on the inputs from the form
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                return redirect()->route('admin.projects.edit', ['projectId' => $projectId])
+                return redirect()->route('admin.projects.info.edit', ['projectInfoId' => $projectInfoId])
                             ->withErrors($validator)
                             ->withInput();
             }
 
-            $project->name             = $request->get('name');
-            $project->short_name       = $request->get('short_name');
-            $project->slug             = str_slug($request->get('slug'));
-            $project->is_menu          = $request->get('is_menu');
-            $project->cover_photo      = $request->get('cover_photo');
-            $project->logo             = $request->get('logo');
-            $project->investor         = $request->get('investor');
-            $project->investor         = $request->get('investor');
-            $project->instagram        = $request->get('instagram');
-            $project->status           = $request->get('status');
-            $project->is_show_homepage = $request->get('is_show_homepage');
+            $project->title      = $request->get('title');
+            $project->slug       = str_slug($request->get('title'));
+            $project->content    = $request->get('content');
+            $project->ordering   = $request->get('ordering');
+            $project->status     = $request->get('status');
+            $project->project_id = $request->get('project_id');
             $project->save();
 
             $request->session()->flash('success', trans('common.msg_update_success'));
-            return redirect()->route('admin.projects');
+            return redirect()->route('admin.projects.info');
         }
 
-        return view('admin.projects.form', $data);
+        return view('admin.project_info.form', $data);
     }
     public function delete(Request $request, $projectId)
     {
@@ -131,8 +123,11 @@ class ProjectInfoController extends Controller
     private function _setRules($request, $id = null)
     {
         $rules =  array(
-            'name'        => 'required',
-            'short_name'  => 'required',
+            'title'      => 'required',
+            'content'    => 'required',
+            'ordering'   => 'required|numeric',
+            'status'     => 'required|in:0,1',
+            'project_id' => 'required|exists:projects,id',
         );
 
         return $rules;

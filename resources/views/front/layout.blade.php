@@ -38,7 +38,7 @@
                                     <li><span>T2 - T7</span>9:00～12:30 / 14:00～19:00</li>
                                     <li><span>CN</span>9:00～12:30 / 14:00～16:30</li>
                                 </ul>
-                                <p class="header_tel">03-9999-9999</p>
+                                <p class="header_tel"><a href="tel:{{ str_replace('.', '', $pageInfo->phone) }}">{{ $pageInfo->phone }}</a></p>
                                 <dl class="header_f">
                                     <dt></dt>
                                     <dd>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="idx_bnr_tel">
                             <dl>
-                                <dt><span class="fs_24">Hotline:</span><br class="box_sp">03-9999-9999</dt>
+                                <dt><span class="fs_24">Hotline:</span><br class="box_sp"><a href="tel:{{ str_replace('.', '', $pageInfo->phone) }}">{{ $pageInfo->phone }}</a></dt>
                             </dl>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                 </div>
                 <div id="footer_link" class="clearfix">
                     <address>
-                        Copyright &copy; 2018 <br class="box_sp">
+                        Copyright &copy; 2018 bdsdautuhot.com <br class="box_sp">
                         All Rights Reserved.
                     </address>
                 </div>

@@ -61,11 +61,11 @@ $homePageStatus = config('site.homepage_status.value');
                                 <label class="col-sm-2 form-control-label">Trạng thái</label>
                                 <div class="col-sm-10">
                                     <div class="i-checks">
-                                        <input id="status_1" type="radio" value="{{ $status['active'] }}" @if (old('status', isset($project->status) ? $project->status : '') == 1) checked="checked" @endif name="status" class="form-control-custom radio-custom">
+                                        <input id="status_1" type="radio" value="{{ $status['active'] }}" @if (old('status', isset($projectInfo->status) ? $projectInfo->status : '') == 1) checked="checked" @endif name="status" class="form-control-custom radio-custom">
                                                <label for="status_1">Active</label>
                                     </div>
                                     <div class="i-checks">
-                                        <input id="status_0" type="radio" value="{{ $status['inactive'] }}" @if (old('status', isset($project->status) ? $project->status : '') != 1) checked="checked" @endif name="status" class="form-control-custom radio-custom">
+                                        <input id="status_0" type="radio" value="{{ $status['inactive'] }}" @if (old('status', isset($projectInfo->status) ? $projectInfo->status : '') == 0) checked="checked" @endif name="status" class="form-control-custom radio-custom">
                                                <label for="status_0">Inactive</label>
                                     </div>
                                 </div>

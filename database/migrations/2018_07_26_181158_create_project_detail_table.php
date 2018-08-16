@@ -17,9 +17,9 @@ class CreateProjectDetailTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->string('content');
-            $table->string('ordering');
-            $table->string('status');
+            $table->text('content');
+            $table->integer('ordering');
+            $table->integer('status');
             $table->integer('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

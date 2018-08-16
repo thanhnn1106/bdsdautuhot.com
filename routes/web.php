@@ -67,9 +67,13 @@ Route::group([
             'as'   => 'projects.info',
             'uses' => 'ProjectInfoController@index',
         ]);
-        $router->get('projects/info/add', [
+        $router->match(['get', 'post'], 'projects/info/add', [
             'as'   => 'projects.info.add',
             'uses' => 'ProjectInfoController@add',
+        ]);
+        $router->match(['get', 'post'], 'projects/info/edit/{projectInfoId}', [
+            'as'   => 'projects.info.edit',
+            'uses' => 'ProjectInfoController@edit',
         ]);
     });
 });
@@ -77,3 +81,5 @@ Route::group([
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/error', 'HomeController@error')->name('error');
