@@ -3,19 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
-class Project extends Model
+class News extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'projects';
+    protected $table = 'news';
 
     public static function getList($params = array())
     {
-        $result = Project::paginate(LIMIT_ROW);
+        $result = DB::table('news AS n')
+            ->select('n.*', 'p.name AS project_name')
+            ->leftjoin('projects AS p', 'n.project_id', '=', 'p.id')
+            ->paginate(LIMIT_ROW);
+
         return $result;
     }
 

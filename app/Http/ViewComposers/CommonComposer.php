@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
 use App\Models\PageInfo;
+use App\Models\Project;
 
 class CommonComposer
 {
@@ -16,9 +17,11 @@ class CommonComposer
     public function compose(View $view)
     {
         $pageInfo = PageInfo::getPageInfo();
+        $menu = Project::getProjectShortNameList();
 
         $view->with([
-            'pageInfo' => $pageInfo
+            'pageInfo' => $pageInfo,
+            'menu' => $menu
         ]);
     }
 }

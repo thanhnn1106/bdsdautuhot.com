@@ -47,6 +47,8 @@ Route::group([
             'as'   => 'dashboard',
             'uses' => 'DashBoardController@index',
         ]);
+
+        // Manage project
         $router->get('/projects', [
             'as'   => 'projects',
             'uses' => 'ProjectController@index',
@@ -63,6 +65,8 @@ Route::group([
             'as'   => 'projects.delete',
             'uses' => 'ProjectController@delete',
         ]);
+
+        // Manage project info
         $router->get('projects/info', [
             'as'   => 'projects.info',
             'uses' => 'ProjectInfoController@index',
@@ -74,6 +78,24 @@ Route::group([
         $router->match(['get', 'post'], 'projects/info/edit/{projectInfoId}', [
             'as'   => 'projects.info.edit',
             'uses' => 'ProjectInfoController@edit',
+        ]);
+
+        // Manage news
+        $router->get('news', [
+            'as'   => 'news',
+            'uses' => 'NewController@index',
+        ]);
+        $router->match(['get', 'post'], 'news/add', [
+            'as'   => 'news.add',
+            'uses' => 'NewController@add',
+        ]);
+        $router->match(['get', 'post'], 'news/edit/{newId}', [
+            'as'   => 'news.edit',
+            'uses' => 'NewController@edit',
+        ]);
+        $router->get('news/delete/{newId}', [
+            'as'   => 'news.delete',
+            'uses' => 'NewController@delete',
         ]);
     });
 });

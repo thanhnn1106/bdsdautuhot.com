@@ -64,6 +64,11 @@
                                 <i class="icon-list"></i>Thông tin dự án
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.news') }}">
+                                <i class="icon-list"></i>Tin tức
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -81,13 +81,13 @@
                     <div class="inner clearfix">
                         <ul id="gnavi">
                             <li><a href="">ホーム</a></li>
-                            <li><a href="vinhomes.html">Vinhomes</a></li>
-                            <li><a href="vinhomes.html">Vinhomes</a></li>
-                            <li><a href="vinhomes.html">Vinhomes</a></li>
-                            <li><a href="">RiverCity</a></li>
-                            <li><a href="">Green Star</a></li>
-                            <li class="sub"><a href="#">Dự án khác</a>
-                                <div class="sub_menu">
+                            @if (!empty($menu))
+                                @foreach ($menu as $item)
+                                <li><a href="/du-an/{{ $item->slug }}">{{ $item->short_name }}</a></li>
+                                @endforeach
+                            @endif
+                            <li><a href="#">Tin tức</a>
+<!--                                <div class="sub_menu">
                                     <ul>
                                         <li><a href="">Vinhomes</a></li>
                                         <li><a href="">Sunrise</a></li>
@@ -100,7 +100,7 @@
                                         <li><a href="">Rivera Park 4</a></li>
                                         <li><a href="">Rivera Park 5</a></li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </li>
                             <li class="i_contact"><a href="" target="_blank"><span class="gnavi_en">LIÊN HỆ</span></a></li>
                         </ul>
