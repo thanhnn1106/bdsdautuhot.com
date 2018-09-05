@@ -34,10 +34,6 @@
                             </p>
                             <div id="icon_menu" class=""><span></span> <span></span> <span></span></div>
                             <div class="header_contact">
-                                <ul class="header_cal">
-                                    <li><span>T2 - T7</span>9:00～12:30 / 14:00～19:00</li>
-                                    <li><span>CN</span>9:00～12:30 / 14:00～16:30</li>
-                                </ul>
                                 <p class="header_tel"><a href="tel:{{ str_replace('.', '', $pageInfo->phone) }}">{{ $pageInfo->phone }}</a></p>
                                 <dl class="header_f">
                                     <dt></dt>
@@ -58,21 +54,21 @@
                             <div>
                                 <div class="h2_info"> </div>
                                 <p class="slider_img">
-                                    <img src="{{ asset_front('images/index_mainning01.jpg') }}" alt="" class="box_pc">
-                                    <img src="{{ asset_front('images/index_mainning01_sp.jpg') }}" alt="" class="box_sp">
+                                    <img src="https://static1.cafeland.vn/cafelandData/upload/tintuc/duan/2015/08/tuan-01/lammark81-1438877788.jpg" alt="" class="box_pc">
+                                    <img src="https://static1.cafeland.vn/cafelandData/upload/tintuc/duan/2015/08/tuan-01/lammark81-1438877788.jpg" alt="" class="box_sp">
                                 </p>
                             </div>
                             <div>
                                 <div class="h2_info"> </div>
                                 <p class="slider_img">
-                                    <img src="{{ asset_front('images/index_mainning02.jpg') }}" alt="" class="box_pc">
-                                    <img src="{{ asset_front('images/index_mainning02_sp.jpg') }}" alt="" class="box_sp"></p>
+                                    <img src="http://camranhmysteryvillas.net/wp-content/uploads/2017/12/amazing-city-1080P-wallpaper.jpg" alt="" class="box_pc">
+                                    <img src="http://camranhmysteryvillas.net/wp-content/uploads/2017/12/amazing-city-1080P-wallpaper.jpg" alt="" class="box_sp"></p>
                             </div>
                             <div>
                                 <div class="h2_info"> </div>
                                 <p class="slider_img">
-                                    <img src="{{ asset_front('images/index_mainning03.jpg') }}" alt="" class="box_pc">
-                                    <img src="{{ asset_front('images/index_mainning03_sp.jpg') }}" alt="" class="box_sp"></p>
+                                    <img src="http://canhovincityq9.com/wp-content/uploads/2018/03/cropped-du-an-vincity-quan-9-3.jpg" alt="" class="box_pc">
+                                    <img src="http://canhovincityq9.com/wp-content/uploads/2018/03/cropped-du-an-vincity-quan-9-3.jpg" alt="" class="box_sp"></p>
                             </div>
                         </div>
                     </div>
@@ -120,7 +116,10 @@
                     <div class="inner clearfix">
                         <div class="index_box05_cont">
                             <h5>Liên hệ ngay để được tư vấn</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                            <ul class="header_cal">
+                                <li><span><strong>T2 - T7:</strong></span> 9:00～12:30 / 14:00～19:00</li>
+                                <li><span><strong>CN     :</strong></span> 9:00～12:30 / 14:00～16:30</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -128,29 +127,25 @@
                 <!-- index_box06 start -->
                 <div id="index_box06" class="clearfix">
                     <div class="inner clearfix">
+                        @if (!empty($news))
                         <div class="box_tiny clearfix">
                             <p class="box06_title">Tin tức về bất động sản</p>
                             <div class="clearfix">
                                 <ul class="news clearfix">
+                                    @foreach ($news as $item)
                                     <li>
-                                        <h4 class="ellipsis"><a href="">Kinh nghiệm mua đất dự án mà bạn cần quan tâm</a></h4>
-                                        <p><img src="{{ asset_front('images/img.jpg') }}" alt=""></p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></li>
+                                        <p>
+                                            <img width="224" height="128" src="{{ $item->thumbnail }}" alt="">
+                                        </p>
+                                        <h4 class="">
+                                            <a href="/tin-tuc/{{ $item->slug }}">{{ $item->title }}</a>
+                                        </h4>
                                     <li>
-                                        <h4 class="ellipsis"><a href="">Nhà đầu cơ bất động sản đang dịch chuyển về tỉnh lẻ</a></h4>
-                                        <p><img src="{{ asset_front('images/img_1.jpg') }}" alt=""></p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></li>
-                                    <li>
-                                        <h4 class="ellipsis"><a href="">Đến cuối năm, thị trường bất động sản còn ảm đạm hơn nữa?</a></h4>
-                                        <p><img src="{{ asset_front('images/img_2.jpg') }}" alt=""></p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></li>
-                                    <li>
-                                        <h4 class="ellipsis"><a href="">Thị trường địa ốc xuất hiện nhiều dấu hiệu giảm tốc</a></h4>
-                                        <p><img src="{{ asset_front('images/img_3.jpg') }}" alt=""></p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
+                        @endif
                         <div class="idx_bnr_tel">
                             <dl>
                                 <dt><span class="fs_24">Hotline:</span><br class="box_sp"><a href="tel:{{ str_replace('.', '', $pageInfo->phone) }}">{{ $pageInfo->phone }}</a></dt>

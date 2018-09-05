@@ -26,6 +26,7 @@ class CreateProjectsTable extends Migration
             $table->string('instagram')->nullable();
             $table->integer('status')->nullable()->default(1);
             $table->boolean('is_show_homepage')->nullable();
+            $table->integer('page_view')->default(rand(100, 1000));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

@@ -5,6 +5,7 @@ namespace App\Http\ViewComposers;
 use Illuminate\View\View;
 use App\Models\PageInfo;
 use App\Models\Project;
+use App\Models\News;
 
 class CommonComposer
 {
@@ -18,10 +19,12 @@ class CommonComposer
     {
         $pageInfo = PageInfo::getPageInfo();
         $menu = Project::getProjectShortNameList();
+        $news = News::getNewestPost(4);
 
         $view->with([
             'pageInfo' => $pageInfo,
-            'menu' => $menu
+            'menu'     => $menu,
+            'news'     => $news
         ]);
     }
 }

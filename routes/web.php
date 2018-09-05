@@ -25,6 +25,10 @@ $router->group([
         'as' => 'project',
         'uses' => 'ProjectController@index'
     ]);
+    $router->get('/tin-tuc/{slug}', [
+        'as' => 'news',
+        'uses' => 'NewController@index'
+    ]);
 });
 
 

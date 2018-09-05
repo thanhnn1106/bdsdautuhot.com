@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->text('content');
             $table->string('thumbnail');
             $table->string('status');
+            $table->integer('page_view')->default(rand(100, 1000));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
