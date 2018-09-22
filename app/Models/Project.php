@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Project extends Model
 {
@@ -16,6 +17,16 @@ class Project extends Model
     public static function getList($params = array())
     {
         $result = Project::paginate(LIMIT_ROW);
+        return $result;
+    }
+
+    public static function getProjectListHomePage($params = array())
+    {
+        $result = DB::table('projects AS p')->select('p.*', 'pi.*')
+            ->leftjoin('project_info AS pi', 'pi.project_id', '=', 'p.id')
+            ->where('p.is_show_homepage', '=', 1)
+            ->get()->toArray();
+//        echo "<pre>";print_r($result);exit;
         return $result;
     }
 

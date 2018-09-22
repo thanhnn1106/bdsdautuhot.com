@@ -76,5 +76,17 @@ return [
         6 => 'Group F',
         7 => 'Group G',
         8 => 'Group H',
-    )
+    ),
+    'contact_status' => array(
+        'label' => array(
+            0 => 'Mới',
+            1 => 'Đang xử lý',
+            2 => 'Đã xử lý',
+        ),
+        'value' => array(
+            'new'   => 0,
+            'process' => 1,
+            'solved' => 2
+        )
+    ),
 ];

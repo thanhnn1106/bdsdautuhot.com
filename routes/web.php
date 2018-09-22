@@ -29,6 +29,10 @@ $router->group([
         'as' => 'news',
         'uses' => 'NewController@index'
     ]);
+    $router->post('/contact_send', [
+        'as'   => 'submit_contact',
+        'uses' => 'ContactsController@add'
+    ]);
 });
 
 

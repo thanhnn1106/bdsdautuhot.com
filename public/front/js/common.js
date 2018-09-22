@@ -104,3 +104,55 @@ $(window).bind('resize load scroll', function () {
 		}
 	}
 });
+
+
+function validateContact()
+{
+    $('#contactForm .text-danger').css('display', 'none');
+    var formName = $('#contactName').val();
+    var formEmail = $('#contactEmail').val();
+    var formPhone = $('#contactPhone').val();
+    var formMessage = $('#contactMessage').val();
+
+    var isValidName = validateName(formName);
+    var isValidEmail = validateEmail(formEmail);
+    var isValidPhone = validatePhone(formPhone);
+    var isValidMessage = validateMessage(formMessage);
+    if (!isValidName) {
+        $('.validate-name').css('display', 'block');
+    } else if (!isValidPhone) {
+        $('.validate-phone').css('display', 'block');
+    } else if (!isValidEmail) {
+        $('.validate-email').css('display', 'block');
+    }  else if (!isValidMessage) {
+        $('.validate-message').css('display', 'block');
+    } else {
+        $('#contactForm').submit();
+    }
+}
+function validateName(formName)
+{
+    if (formName.length <= 1) {
+        return false;
+    }
+    return true;
+}
+function validateEmail(formEmail)
+{
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(formEmail);
+}
+function validatePhone(formPhone)
+{
+    if (formPhone.length <= 0 || formPhone.length >= 20) {
+        return false;
+    }
+    return true;
+}
+function validateMessage(formMessage)
+{
+    if (formMessage.length <= 10) {
+        return false;
+    }
+    return true;
+}

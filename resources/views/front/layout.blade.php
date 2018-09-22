@@ -161,31 +161,38 @@
                                     <img src="{{ asset_front('images/logo.png') }}" width="195" alt="logo">
                                 </a>
                             </p>
+                            <form id="contactForm" method="POST" action="{{ route('front.submit_contact') }}">
                             <div class="frm clearfix">
                                 <ul class="clearfix login_frm">
                                     <li>
                                         <p class="mb0">Họ và tên</p>
-                                        <input type="text" class="iput" placeholder="">
+                                        <input id="contactName" name="contactName" type="text" class="iput" placeholder="">
+                                        <p style="display: none;" class="text-danger validate-name ">Name was invalid.</p>
                                     </li>
                                     <li>
                                         <p class="mb0">Số điện thoại</p>
-                                        <input type="number" class="iput" placeholder="">
+                                        <input id="contactPhone" name="contactPhone" type="number" class="iput" placeholder="">
+                                        <p style="display: none;" class="text-danger validate-phone">Phone was invalid.</p>
                                     </li>
                                     <li>
                                         <p class="mb0">Email</p>
-                                        <input type="email" class="iput" placeholder="">
+                                        <input id="contactEmail" name="contactEmail" type="email" class="iput" placeholder="">
+                                        <p style="display: none;" class="text-danger validate-email">Email was invalid.</p>
                                     </li>
                                     <li>
-                                        <p class="mb0">Nhu cầu</p>
-                                        <textarea rows="4" class="iput_area"></textarea>
+                                        <p class="mb0">Tin nhắn</p>
+                                        <textarea id="contactMessage" name="contactMessage" rows="4" class="iput_area"></textarea>
+                                        <p style="display: none;" class="text-danger validate-message">Message was invalid.</p>
                                     </li>
                                     <li class="center">
                                         <button type="button" class="bg_link">
-                                            <a href="">Gửi thông tin</a>
+                                            <a type="button" href="javascript:validateContact()" class="btn btn_03">Gửi thông tin</a>
                                         </button>
                                     </li>
                                 </ul>
                             </div>
+                            {{ csrf_field() }}
+                            </form>
                         </div>
                     </div>
                 </div>
