@@ -14,7 +14,7 @@ class Contacts extends Model
      */
     protected $table = 'contacts';
 
-    public static function getList($params)
+    public static function getList($params = 10)
     {
         $query = Contacts::where('email', 'LIKE', "%{$params['email']}%");;
         if ($params['filter_status'] != '') {

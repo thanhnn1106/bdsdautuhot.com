@@ -105,6 +105,24 @@ Route::group([
             'as'   => 'news.delete',
             'uses' => 'NewController@delete',
         ]);
+
+        // Manage contacts
+        $router->get('contacts', [
+            'as'   => 'contacts',
+            'uses' => 'ContactsController@index',
+        ]);
+        $router->match(['get', 'post'], 'contacts/add', [
+            'as'   => 'contacts.add',
+            'uses' => 'ContactsController@add',
+        ]);
+        $router->match(['get', 'post'], 'contacts/edit/{newId}', [
+            'as'   => 'contacts.edit',
+            'uses' => 'ContactsController@edit',
+        ]);
+        $router->get('contacts/delete/{newId}', [
+            'as'   => 'contacts.delete',
+            'uses' => 'ContactsController@delete',
+        ]);
     });
 });
 

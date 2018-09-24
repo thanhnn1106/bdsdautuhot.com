@@ -69,6 +69,11 @@
                                 <i class="icon-list"></i>Tin tức
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.contacts') }}">
+                                <i class="icon-list"></i>Tin nhắn của khách
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
