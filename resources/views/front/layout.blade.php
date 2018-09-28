@@ -29,7 +29,7 @@
                         <div id="header_info">
                             <p id="logo">
                                 <a href="http://www.nakamura-dc.jp/">
-                                    <img src="{{ asset_front('images/logo.png') }}" width="195" alt="">
+                                    <img src="{{ asset_front('images/logo1.png') }}" width="195" alt="">
                                 </a>
                             </p>
                             <div id="icon_menu" class=""><span></span> <span></span> <span></span></div>

@@ -111,11 +111,7 @@ Route::group([
             'as'   => 'contacts',
             'uses' => 'ContactsController@index',
         ]);
-        $router->match(['get', 'post'], 'contacts/add', [
-            'as'   => 'contacts.add',
-            'uses' => 'ContactsController@add',
-        ]);
-        $router->match(['get', 'post'], 'contacts/edit/{newId}', [
+        $router->match(['get', 'post'], 'contacts/edit/{contactId}', [
             'as'   => 'contacts.edit',
             'uses' => 'ContactsController@edit',
         ]);

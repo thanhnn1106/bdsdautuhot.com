@@ -42,6 +42,7 @@ class NewController extends Controller
             $insert = [
                 'project_id' => $request->get('project_id'),
                 'title'      => $request->get('title'),
+                'short_des'  => $request->get('short_des'),
                 'slug'       => str_slug($request->get('title')),
                 'content'    => $request->get('content'),
                 'thumbnail'  => $request->get('thumbnail'),
@@ -86,6 +87,7 @@ class NewController extends Controller
 
             $news->project_id = $request->get('project_id');
             $news->title      = $request->get('title');
+            $news->short_des  = $request->get('short_des');
             $news->slug       = str_slug($request->get('title'));
             $news->content    = $request->get('content');
             $news->thumbnail  = $request->get('thumbnail');
@@ -125,6 +127,7 @@ class NewController extends Controller
             'project_id' => 'required',
             'title'      => 'required',
             'content'    => 'required',
+            'short_des'  => 'required',
             'thumbnail'  => 'required',
             'status'     => 'required',
         );

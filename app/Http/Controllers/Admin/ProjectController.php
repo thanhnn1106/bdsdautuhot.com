@@ -42,6 +42,7 @@ class ProjectController extends Controller
                 'name'             => $request->get('name'),
                 'slug'             => str_slug($request->get('name')),
                 'short_name'       => $request->get('short_name'),
+                'short_des'        => $request->get('short_des'),
                 'cover_photo'      => $request->get('cover_photo'),
                 'logo'             => $request->get('logo'),
                 'investor'         => $request->get('investor'),
@@ -88,6 +89,7 @@ class ProjectController extends Controller
 
             $project->name             = $request->get('name');
             $project->short_name       = $request->get('short_name');
+            $project->short_des        = $request->get('short_des');
             $project->slug             = str_slug($request->get('slug'));
             $project->is_menu          = $request->get('is_menu');
             $project->cover_photo      = $request->get('cover_photo');
@@ -128,6 +130,7 @@ class ProjectController extends Controller
         $rules =  array(
             'name'        => 'required',
             'short_name'  => 'required',
+            'short_des'   => 'required',
         );
 
         return $rules;

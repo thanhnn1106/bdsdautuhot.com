@@ -12,83 +12,46 @@ class ContactsController extends Controller
 {
     public function index(Request $request)
     {
+        $paramSearch['filter_status']   = $request->get('filter_status');
         $data = array(
-            'news' => Contacts::getList()
+            'contacts'      => Contacts::getList($paramSearch),
+            'filter_status' => $paramSearch['filter_status']
         );
 
-        return view('admin.news.list', $data);
+        return view('admin.contacts.list', $data);
     }
-    public function add(Request $request)
+
+    public function edit(Request $request, $contactId)
     {
-        $data = array(
-            'actionForm' => route('admin.contacts.add'),
-            'title'      => 'Thêm mới',
-        );
-
-        if ($request->isMethod('POST')) {
-            $dataPost = $request->all();
-
-            $rules = $this->_setRules($dataPost);
-            // run the validation rules on the inputs from the form
-            $validator = Validator::make($dataPost, $rules);
-
-            if ($validator->fails()) {
-                return redirect()->route('admin.news.add')
-                            ->withErrors($validator)
-                            ->withInput();
-            }
-            $insert = [
-                'project_id' => $request->get('project_id'),
-                'title'      => $request->get('title'),
-                'slug'       => str_slug($request->get('title')),
-                'content'    => $request->get('content'),
-                'thumbnail'  => $request->get('thumbnail'),
-                'status'     => $request->get('status'),
-            ];
-
-            Contacts::insert($insert);
-
-            $request->session()->flash('success', trans('common.msg_create_success'));
-            return redirect()->route('admin.news');
-        }
-
-        return view('admin.contacts.form', $data);
-    }
-    public function edit(Request $request, $newId)
-    {
-        $news = Contacts::find($newId);
-        if ($news === NULL) {
+        $contact = Contacts::find($contactId);
+        if ($contact === NULL) {
             $request->session()->flash('error', trans('common.msg_data_not_found'));
             return redirect(route('admin.contacts'));
         }
 
         $data = array(
-            'actionForm' => route('admin.contacts.edit', ['newId' => $newId]),
-            'new'        => $news,
+            'actionForm' => route('admin.contacts.edit', ['contactId' => $contactId]),
+            'contact'    => $contact,
             'title'      => 'Cập nhật',
         );
 
         if ($request->isMethod('POST')) {
 
-            $rules = $this->_setRules($request, $newId);
+            $rules = $this->_setRules($request, $contactId);
 
             // run the validation rules on the inputs from the form
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                return redirect()->route('admin.news.edit', ['newId' => $newId])
+                return redirect()->route('admin.contacts.edit', ['contactId' => $contactId])
                             ->withErrors($validator)
                             ->withInput();
             }
 
-            $news->project_id = $request->get('project_id');
-            $news->title      = $request->get('title');
-            $news->slug       = str_slug($request->get('title'));
-            $news->content    = $request->get('content');
-            $news->thumbnail  = $request->get('thumbnail');
-            $news->status     = $request->get('status');
-            $news->updated_at = date('Y-m-d H:i:s');
-            $news->save();
+            $contact->note       = $request->get('note');
+            $contact->status     = $request->get('status');
+            $contact->updated_at = date('Y-m-d H:i:s');
+            $contact->save();
 
             $request->session()->flash('success', trans('common.msg_update_success'));
             return redirect()->route('admin.contacts');
@@ -97,15 +60,15 @@ class ContactsController extends Controller
         return view('admin.contacts.form', $data);
     }
 
-    public function delete(Request $request, $newId)
+    public function delete(Request $request, $contactId)
     {
-        $new = Contacts::find($newId);
-        if ($new === NULL) {
+        $contact = Contacts::find($contactId);
+        if ($contact === NULL) {
             $request->session()->flash('error', trans('common.msg_data_not_found'));
             return redirect(route('admin.contacts'));
         }
 
-        $hasDelete = $new->delete();
+        $hasDelete = $contact->delete();
 
         if ($hasDelete) {
             $request->session()->flash('success', trans('common.msg_delete_success'));
@@ -119,11 +82,7 @@ class ContactsController extends Controller
     private function _setRules($request, $id = null)
     {
         $rules =  array(
-            'project_id' => 'required',
-            'title'      => 'required',
-            'content'    => 'required',
-            'thumbnail'  => 'required',
-            'status'     => 'required',
+            'status' => 'required|in:0,1,2',
         );
 
         return $rules;

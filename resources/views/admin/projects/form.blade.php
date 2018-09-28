@@ -48,6 +48,16 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Mô tả ngắn</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="short_name" name="short_des" class="form-control @if ($errors->has('short_des'))is-invalid @endif"
+                                           value="{{ old('short_des', isset($project->short_des) ? $project->short_des : '') }}">
+                                    @if ($errors->has('short_des'))
+                                    <div class="invalid-feedback">{{ $errors->first('short_des') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 form-control-label">Hình banner</label>
                                 <div class="col-sm-10">
                                     <input type="text" id="cover_photo" name="cover_photo" class="form-control @if ($errors->has('cover_photo'))is-invalid @endif"

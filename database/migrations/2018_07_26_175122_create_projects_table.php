@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('short_name');
+            $table->text('short_des');
             $table->string('slug');
             $table->boolean('is_menu');
             $table->string('cover_photo')->nullable();
