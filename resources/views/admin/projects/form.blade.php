@@ -28,7 +28,7 @@
                         <form class="form-horizontal" action="{{ $actionForm }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Tên dự án</label>
+                                <label class="col-sm-2 form-control-label">Tên dự án <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="name" name="name" class="form-control @if ($errors->has('name'))is-invalid @endif"
                                            value="{{ old('name', isset($project->name) ? $project->name : '') }}">
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Tên ngắn</label>
+                                <label class="col-sm-2 form-control-label">Tên ngắn <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="short_name" name="short_name" class="form-control @if ($errors->has('short_name'))is-invalid @endif"
                                            value="{{ old('short_name', isset($project->short_name) ? $project->name : '') }}">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Mô tả ngắn</label>
+                                <label class="col-sm-2 form-control-label">Mô tả ngắn <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="short_name" name="short_des" class="form-control @if ($errors->has('short_des'))is-invalid @endif"
                                            value="{{ old('short_des', isset($project->short_des) ? $project->short_des : '') }}">
@@ -64,6 +64,26 @@
                                            value="{{ old('cover_photo', isset($project->cover_photo) ? $project->cover_photo : '') }}">
                                     @if ($errors->has('cover_photo'))
                                     <div class="invalid-feedback">{{ $errors->first('cover_photo') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Hình dự án mới</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="home_photo_new" name="home_photo_new" class="form-control @if ($errors->has('home_photo_new'))is-invalid @endif"
+                                           value="{{ old('home_photo_new', isset($project->home_photo_new) ? $project->home_photo_new : '') }}">
+                                    @if ($errors->has('home_photo_new'))
+                                    <div class="invalid-feedback">{{ $errors->first('home_photo_new') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Hình dự án nổi bật</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="home_photo_highlight" name="home_photo_highlight" class="form-control @if ($errors->has('home_photo_highlight'))is-invalid @endif"
+                                           value="{{ old('home_photo_highlight', isset($project->home_photo_highlight) ? $project->home_photo_highlight : '') }}">
+                                    @if ($errors->has('home_photo_highlight'))
+                                    <div class="invalid-feedback">{{ $errors->first('home_photo_highlight') }}</div>
                                     @endif
                                 </div>
                             </div>
@@ -140,7 +160,7 @@
                                 @endif
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Hiển thị ở trang chủ</label>
+                                <label class="col-sm-2 form-control-label">Dự án nổi bật</label>
                                 <div class="col-sm-10">
                                     <div class="i-checks">
                                         <input id ="homePageStatus1" type="radio" value="{{ $homePageStatus['yes'] }}" @if (old('is_show_homepage', isset($project->is_show_homepage) ? $project->is_show_homepage : '') == 1) checked="checked" @endif name="is_show_homepage" class="form-control-custom radio-custom">
@@ -153,6 +173,22 @@
                                 </div>
                                 @if ($errors->has('is_show_homepage'))
                                 <div class="invalid-feedback">{{ $errors->first('is_show_homepage') }}</div>
+                                @endif
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Dự án mới</label>
+                                <div class="col-sm-10">
+                                    <div class="i-checks">
+                                        <input id ="isNew1" type="radio" value="{{ $homePageStatus['yes'] }}" @if (old('is_new', isset($project->is_new) ? $project->is_new : '') == 1) checked="checked" @endif name="is_new" class="form-control-custom radio-custom">
+                                        <label for="isNew1">Có</label>
+                                    </div>
+                                    <div class="i-checks">
+                                        <input id="isNew0" type="radio" value="{{ $homePageStatus['no'] }}" @if (old('is_new', isset($project->is_new) ? $project->is_new : '') != 1) checked="checked" @endif name="is_new" class="form-control-custom radio-custom">
+                                        <label for="isNew0">Không</label>
+                                    </div>
+                                </div>
+                                @if ($errors->has('is_new'))
+                                <div class="invalid-feedback">{{ $errors->first('is_new') }}</div>
                                 @endif
                             </div>
                             <div class="line"></div>

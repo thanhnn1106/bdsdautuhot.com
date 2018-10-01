@@ -10,9 +10,11 @@ class HomeController extends BaseController
 {
     public function index(Request $request)
     {
-        $projectList = Project::getProjectListHomePage();
+        $projectList    = Project::getProjectListHomePage();
+        $projectListNew = Project::getProjectListHomePage();
         $data = [
-            'projectList' => $projectList
+            'projectList'    => $projectList,
+            'projectListNew' => $projectListNew,
         ];
         return view('front.index', $data);
     }

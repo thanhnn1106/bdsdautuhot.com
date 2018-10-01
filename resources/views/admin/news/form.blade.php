@@ -26,7 +26,7 @@
                         <form class="form-horizontal" action="{{ $actionForm }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Tên bài viết</label>
+                                <label class="col-sm-2 form-control-label">Tên bài viết <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="title" name="title" class="form-control @if ($errors->has('title'))is-invalid @endif"
                                            value="{{ old('title', isset($new->title) ? $new->title : '') }}">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Hình đại diện</label>
+                                <label class="col-sm-2 form-control-label">Hình đại diện <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="thumbnail" name="thumbnail" class="form-control @if ($errors->has('thumbnail'))is-invalid @endif"
                                            value="{{ old('thumbnail', isset($new->thumbnail) ? $new->thumbnail : '') }}">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Mô tả ngắn</label>
+                                <label class="col-sm-2 form-control-label">Mô tả ngắn <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="short_des" name="short_des" class="form-control @if ($errors->has('short_des'))is-invalid @endif"
                                            value="{{ old('short_des', isset($new->short_des) ? $new->short_des : '') }}">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Nội dung</label>
+                                <label class="col-sm-2 form-control-label">Nội dung <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <textarea name="content" class="form-control border-corner editor-content  @if ($errors->has('content'))is-invalid @endif" rows="3">{{ old('content', isset($new->content) ? $new->content : '') }}</textarea>
                                     @if ($errors->has('content'))

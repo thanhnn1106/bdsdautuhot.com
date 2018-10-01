@@ -135,12 +135,12 @@
                                     @foreach ($news as $item)
                                     <li>
                                         <p>
-                                            <img width="224" height="128" src="{{ $item->thumbnail }}" alt="">
+                                            <a href="/tin-tuc/{{ $item->slug }}"><img src="{{ $item->thumbnail }}" alt=""></a>
                                         </p>
-                                        <h4 class="">
+                                        <span class="title">
                                             <a href="/tin-tuc/{{ $item->slug }}">{{ $item->title }}</a>
-                                        </h4>
-                                    <li>
+                                        </span>
+                                    </li>
                                     @endforeach
                                 </ul>
                             </div>

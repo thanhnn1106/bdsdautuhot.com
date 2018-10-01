@@ -39,17 +39,19 @@ class ProjectController extends Controller
                             ->withInput();
             }
             $insert = [
-                'name'             => $request->get('name'),
-                'slug'             => str_slug($request->get('name')),
-                'short_name'       => $request->get('short_name'),
-                'short_des'        => $request->get('short_des'),
-                'cover_photo'      => $request->get('cover_photo'),
-                'logo'             => $request->get('logo'),
-                'investor'         => $request->get('investor'),
-                'instagram'        => $request->get('instagram'),
-                'status'           => $request->get('status'),
-                'is_menu'          => $request->get('is_menu'),
-                'is_show_homepage' => $request->get('is_show_homepage'),
+                'name'                 => $request->get('name'),
+                'slug'                 => str_slug($request->get('name')),
+                'short_name'           => $request->get('short_name'),
+                'short_des'            => $request->get('short_des'),
+                'cover_photo'          => $request->get('cover_photo'),
+                'home_photo_new'       => $request->get('home_photo_new'),
+                'home_photo_highlight' => $request->get('home_photo_highlight'),
+                'logo'                 => $request->get('logo'),
+                'investor'             => $request->get('investor'),
+                'instagram'            => $request->get('instagram'),
+                'status'               => $request->get('status'),
+                'is_menu'              => $request->get('is_menu'),
+                'is_show_homepage'     => $request->get('is_show_homepage'),
             ];
 
             Project::insert($insert);
@@ -87,18 +89,20 @@ class ProjectController extends Controller
                             ->withInput();
             }
 
-            $project->name             = $request->get('name');
-            $project->short_name       = $request->get('short_name');
-            $project->short_des        = $request->get('short_des');
-            $project->slug             = str_slug($request->get('slug'));
-            $project->is_menu          = $request->get('is_menu');
-            $project->cover_photo      = $request->get('cover_photo');
-            $project->logo             = $request->get('logo');
-            $project->investor         = $request->get('investor');
-            $project->investor         = $request->get('investor');
-            $project->instagram        = $request->get('instagram');
-            $project->status           = $request->get('status');
-            $project->is_show_homepage = $request->get('is_show_homepage');
+            $project->name                 = $request->get('name');
+            $project->short_name           = $request->get('short_name');
+            $project->short_des            = $request->get('short_des');
+            $project->slug                 = str_slug($request->get('slug'));
+            $project->is_menu              = $request->get('is_menu');
+            $project->cover_photo          = $request->get('cover_photo');
+            $project->home_photo_new       = $request->get('home_photo_new');
+            $project->home_photo_highlight = $request->get('home_photo_highlight');
+            $project->logo                 = $request->get('logo');
+            $project->investor             = $request->get('investor');
+            $project->investor             = $request->get('investor');
+            $project->instagram            = $request->get('instagram');
+            $project->status               = $request->get('status');
+            $project->is_show_homepage     = $request->get('is_show_homepage');
             $project->save();
 
             $request->session()->flash('success', trans('common.msg_update_success'));
@@ -127,10 +131,20 @@ class ProjectController extends Controller
     }
     private function _setRules($request, $id = null)
     {
+        $isNewValidate = '';
+        $isHighlightValidate = '';
+        if ($request->is_show_homepage) {
+            $isHighlightValidate = 'required';
+        }
+        if ($request->is_new) {
+            $isNewValidate = 'required';
+        }
         $rules =  array(
-            'name'        => 'required',
-            'short_name'  => 'required',
-            'short_des'   => 'required',
+            'name'                 => 'required',
+            'short_name'           => 'required',
+            'short_des'            => 'required',
+            'home_photo_new'       => $isNewValidate,
+            'home_photo_highlight' => $isHighlightValidate,
         );
 
         return $rules;

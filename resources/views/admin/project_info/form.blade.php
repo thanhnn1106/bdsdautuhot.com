@@ -28,7 +28,7 @@ $homePageStatus = config('site.homepage_status.value');
                         <form class="form-horizontal" action="{{ $actionForm }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Dự án</label>
+                                <label class="col-sm-2 form-control-label">Dự án <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="project_id">
                                         <option value=""></option>
@@ -39,7 +39,7 @@ $homePageStatus = config('site.homepage_status.value');
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Tiêu đề</label>
+                                <label class="col-sm-2 form-control-label">Tiêu đề <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" id="title" name="title" class="form-control @if ($errors->has('title'))is-invalid @endif"
                                            value="{{ old('title', isset($projectInfo->title) ? $projectInfo->title : '') }}">
@@ -49,7 +49,7 @@ $homePageStatus = config('site.homepage_status.value');
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Nội dung</label>
+                                <label class="col-sm-2 form-control-label">Nội dung <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <textarea name="content" class="form-control border-corner editor-content  @if ($errors->has('content'))is-invalid @endif" rows="3">{{ old('content', isset($projectInfo->content) ? $projectInfo->content : '') }}</textarea>
                                     @if ($errors->has('content'))
@@ -74,7 +74,7 @@ $homePageStatus = config('site.homepage_status.value');
                                 @endif
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Sắp xếp</label>
+                                <label class="col-sm-2 form-control-label">Sắp xếp <span class="text-danger">(*)</span></label>
                                 <div class="col-sm-10">
                                     <input type="number" id="ordering" name="ordering" class="form-control @if ($errors->has('ordering'))is-invalid @endif"
                                            value="{{ old('ordering', isset($projectInfo->ordering) ? $projectInfo->ordering : '') }}">
