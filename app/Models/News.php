@@ -35,6 +35,18 @@ class News extends Model
         return $result;
     }
 
+    public static function getHottestPost($limit)
+    {
+        $result = News::select('*')
+            ->where('status', '=', 1)
+            ->orderBy('page_view','DESC')
+            ->orderBy('created_at','DESC')
+            ->limit($limit)
+            ->get();
+
+        return $result;
+    }
+
     public static function getProjectShortNameList($params = array())
     {
         $result = Project::select('short_name', 'slug')

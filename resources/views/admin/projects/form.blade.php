@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Hình banner</label>
+                                <label class="col-sm-2 form-control-label">Hình banner <br />(1850px x 600px)</label>
                                 <div class="col-sm-10">
                                     <input type="text" id="cover_photo" name="cover_photo" class="form-control @if ($errors->has('cover_photo'))is-invalid @endif"
                                            value="{{ old('cover_photo', isset($project->cover_photo) ? $project->cover_photo : '') }}">
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Hình dự án mới</label>
+                                <label class="col-sm-2 form-control-label">Hình dự án mới <br />(282px x 141px)</label>
                                 <div class="col-sm-10">
                                     <input type="text" id="home_photo_new" name="home_photo_new" class="form-control @if ($errors->has('home_photo_new'))is-invalid @endif"
                                            value="{{ old('home_photo_new', isset($project->home_photo_new) ? $project->home_photo_new : '') }}">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Hình dự án nổi bật</label>
+                                <label class="col-sm-2 form-control-label">Hình dự án nổi bật  <br />(844px x 350px)</label>
                                 <div class="col-sm-10">
                                     <input type="text" id="home_photo_highlight" name="home_photo_highlight" class="form-control @if ($errors->has('home_photo_highlight'))is-invalid @endif"
                                            value="{{ old('home_photo_highlight', isset($project->home_photo_highlight) ? $project->home_photo_highlight : '') }}">

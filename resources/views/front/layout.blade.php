@@ -51,25 +51,25 @@
                 <div id="top_info" class="clearfix">
                     <div class="inner clearfix">
                         <div id="slider">
+                            @if (!empty($menu))
+                            @foreach ($menu as $item)
                             <div>
                                 <div class="h2_info"> </div>
                                 <p class="slider_img">
-                                    <img src="https://static1.cafeland.vn/cafelandData/upload/tintuc/duan/2015/08/tuan-01/lammark81-1438877788.jpg" alt="" class="box_pc">
-                                    <img src="https://static1.cafeland.vn/cafelandData/upload/tintuc/duan/2015/08/tuan-01/lammark81-1438877788.jpg" alt="" class="box_sp">
+                                    <img src="{{ $item->cover_photo }}" alt="" class="box_pc">
+                                    <img src="{{ $item->cover_photo }}" alt="" class="box_sp">
                                 </p>
                             </div>
+                            @endforeach
+                            @else
                             <div>
                                 <div class="h2_info"> </div>
                                 <p class="slider_img">
-                                    <img src="http://camranhmysteryvillas.net/wp-content/uploads/2017/12/amazing-city-1080P-wallpaper.jpg" alt="" class="box_pc">
-                                    <img src="http://camranhmysteryvillas.net/wp-content/uploads/2017/12/amazing-city-1080P-wallpaper.jpg" alt="" class="box_sp"></p>
+                                    <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_pc">
+                                    <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_sp">
+                                </p>
                             </div>
-                            <div>
-                                <div class="h2_info"> </div>
-                                <p class="slider_img">
-                                    <img src="http://canhovincityq9.com/wp-content/uploads/2018/03/cropped-du-an-vincity-quan-9-3.jpg" alt="" class="box_pc">
-                                    <img src="http://canhovincityq9.com/wp-content/uploads/2018/03/cropped-du-an-vincity-quan-9-3.jpg" alt="" class="box_sp"></p>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                     <div class="inner clearfix">
                         @if (!empty($news))
                         <div class="box_tiny clearfix">
-                            <p class="box06_title">Tin tức về bất động sản</p>
+                            <p class="box06_title">Tin tức mới nhất</p>
                             <div class="clearfix">
                                 <ul class="news clearfix">
                                     @foreach ($news as $item)
@@ -138,7 +138,26 @@
                                             <a href="/tin-tuc/{{ $item->slug }}"><img src="{{ $item->thumbnail }}" alt=""></a>
                                         </p>
                                         <span class="title">
-                                            <a href="/tin-tuc/{{ $item->slug }}">{{ $item->title }}</a>
+                                            <a href="/tin-tuc/{{ $item->slug }}"><strong>{{ $item->title }}</strong></a>
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @if (!empty($hotNews))
+                        <div class="box_tiny clearfix">
+                            <p class="box06_title">Tin tức được xem nhiều nhất</p>
+                            <div class="clearfix">
+                                <ul class="news clearfix">
+                                    @foreach ($hotNews as $item)
+                                    <li>
+                                        <p>
+                                            <a href="/tin-tuc/{{ $item->slug }}"><img src="{{ $item->thumbnail }}" alt=""></a>
+                                        </p>
+                                        <span class="title">
+                                            <a href="/tin-tuc/{{ $item->slug }}"><strong>{{ $item->title }}</strong></a>
                                         </span>
                                     </li>
                                     @endforeach

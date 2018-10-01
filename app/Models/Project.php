@@ -22,8 +22,8 @@ class Project extends Model
 
     public static function getProjectListHomePageNew($params = array())
     {
-        $result = DB::table('projects AS p')->select('p.*', 'pi.*')
-            ->leftjoin('project_info AS pi', 'pi.project_id', '=', 'p.id')
+        $result = DB::table('projects AS p')->select('p.*')
+            ->where('p.status', '=', 1)
             ->where('p.is_new', '=', 1)
             ->get()->toArray();
 
@@ -32,8 +32,8 @@ class Project extends Model
 
     public static function getProjectListHomePage($params = array())
     {
-        $result = DB::table('projects AS p')->select('p.*', 'pi.*')
-            ->leftjoin('project_info AS pi', 'pi.project_id', '=', 'p.id')
+        $result = DB::table('projects AS p')->select('p.*')
+            ->where('p.status', '=', 1)
             ->where('p.is_show_homepage', '=', 1)
             ->get()->toArray();
 
@@ -42,8 +42,9 @@ class Project extends Model
 
     public static function getProjectShortNameList($params = array())
     {
-        $result = Project::select('short_name', 'slug')
-            ->where('is_menu', '=', 1)
+        $result = Project::select('short_name', 'cover_photo', 'slug')
+            ->where('status', '=', 1)
+            ->whereAnd('is_menu', '=', 1)
             ->get();
         return $result;
     }

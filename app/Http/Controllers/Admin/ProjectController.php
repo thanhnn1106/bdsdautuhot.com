@@ -51,6 +51,7 @@ class ProjectController extends Controller
                 'instagram'            => $request->get('instagram'),
                 'status'               => $request->get('status'),
                 'is_menu'              => $request->get('is_menu'),
+                'is_new'               => $request->get('is_new'),
                 'is_show_homepage'     => $request->get('is_show_homepage'),
             ];
 
@@ -92,7 +93,7 @@ class ProjectController extends Controller
             $project->name                 = $request->get('name');
             $project->short_name           = $request->get('short_name');
             $project->short_des            = $request->get('short_des');
-            $project->slug                 = str_slug($request->get('slug'));
+            $project->slug                 = str_slug($request->get('name'));
             $project->is_menu              = $request->get('is_menu');
             $project->cover_photo          = $request->get('cover_photo');
             $project->home_photo_new       = $request->get('home_photo_new');
@@ -103,6 +104,7 @@ class ProjectController extends Controller
             $project->instagram            = $request->get('instagram');
             $project->status               = $request->get('status');
             $project->is_show_homepage     = $request->get('is_show_homepage');
+            $project->is_new               = $request->get('is_new');
             $project->save();
 
             $request->session()->flash('success', trans('common.msg_update_success'));

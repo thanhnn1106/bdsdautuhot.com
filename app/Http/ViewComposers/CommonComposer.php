@@ -20,11 +20,13 @@ class CommonComposer
         $pageInfo = PageInfo::getPageInfo();
         $menu = Project::getProjectShortNameList();
         $news = News::getNewestPost(4);
+        $hotNews = News::getHottestPost(4);
 
         $view->with([
             'pageInfo' => $pageInfo,
             'menu'     => $menu,
-            'news'     => $news
+            'news'     => $news,
+            'hotNews'  => $hotNews
         ]);
     }
 }

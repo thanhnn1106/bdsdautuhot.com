@@ -11,7 +11,7 @@ class HomeController extends BaseController
     public function index(Request $request)
     {
         $projectList    = Project::getProjectListHomePage();
-        $projectListNew = Project::getProjectListHomePage();
+        $projectListNew = Project::getProjectListHomePageNew();
         $data = [
             'projectList'    => $projectList,
             'projectListNew' => $projectListNew,
