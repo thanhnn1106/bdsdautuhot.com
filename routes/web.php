@@ -39,7 +39,7 @@ $router->group([
 // ADMIN ROUTER
 Route::group([
     'namespace'    => 'Admin',
-    'prefix'       => 'cpanel',
+    'prefix'       => 'cpanelxxx',
     'as'           => 'admin.',
     'middleware'   => 'web'
 ], function ($router) {
