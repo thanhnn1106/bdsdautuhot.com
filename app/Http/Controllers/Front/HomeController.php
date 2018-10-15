@@ -16,6 +16,7 @@ class HomeController extends BaseController
             'projectList'    => $projectList,
             'projectListNew' => $projectListNew,
         ];
+
         return view('front.index', $data);
     }
 

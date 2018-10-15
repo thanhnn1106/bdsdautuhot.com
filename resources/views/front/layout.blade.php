@@ -51,24 +51,31 @@
                 <div id="top_info" class="clearfix">
                     <div class="inner clearfix">
                         <div id="slider">
-                            @if (!empty($menu))
-                            @foreach ($menu as $item)
-                            <div>
-                                <div class="h2_info"> </div>
-                                <p class="slider_img">
-                                    <img src="{{ $item->cover_photo }}" alt="" class="box_pc">
-                                    <img src="{{ $item->cover_photo }}" alt="" class="box_sp">
-                                </p>
-                            </div>
-                            @endforeach
+                            @if (empty($menu))
+                                <div>
+                                    <div class="h2_info"> </div>
+                                    <p class="slider_img">
+                                        <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_pc">
+                                        <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_sp">
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="h2_info"> </div>
+                                    <p class="slider_img">
+                                        <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_pc">
+                                        <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_sp">
+                                    </p>
+                                </div>
                             @else
-                            <div>
-                                <div class="h2_info"> </div>
-                                <p class="slider_img">
-                                    <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_pc">
-                                    <img src="{{ asset_front('images/vincity-quan-9.jpg') }}" alt="" class="box_sp">
-                                </p>
-                            </div>
+                                @foreach ($menu as $item)
+                                <div>
+                                    <div class="h2_info"> </div>
+                                    <p class="slider_img">
+                                        <img src="{{ $item->cover_photo }}" alt="" class="box_pc">
+                                        <img src="{{ $item->cover_photo }}" alt="" class="box_sp">
+                                    </p>
+                                </div>
+                                @endforeach
                             @endif
                         </div>
                     </div>

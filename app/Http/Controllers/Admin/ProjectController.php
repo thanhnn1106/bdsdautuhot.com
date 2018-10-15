@@ -135,10 +135,10 @@ class ProjectController extends Controller
     {
         $isNewValidate = '';
         $isHighlightValidate = '';
-        if ($request->is_show_homepage) {
+        if ($request['is_show_homepage']) {
             $isHighlightValidate = 'required';
         }
-        if ($request->is_new) {
+        if ($request['is_new']) {
             $isNewValidate = 'required';
         }
         $rules =  array(

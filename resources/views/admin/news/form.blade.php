@@ -107,26 +107,23 @@
 @endsection
 
 @section('footer_script')
-<link href="{{ asset('plugins/bootstrap-tagsinput/tagsinput.css') }}" rel="stylesheet"/>
-<script src="{{ asset('plugins/bootstrap-tagsinput/tagsinput.js') }}"></script>
-<!-- TinyMCE -->
-<script type="text/javascript" src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
+<!-- Include CSS for icons. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Include Editor style. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+
+<!-- Initialize the editor. -->
 <script>
-$(function() {
-    tinymce.init({
-        selector: ".editor-content", 
-        theme: "modern", 
-        height: 400,
-        subfolder:"",
-        plugins: [ 
-        "advlist autolink link image lists charmap print preview hr anchor pagebreak", 
-        "searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking", 
-        "table contextmenu directionality emoticons paste textcolor filemanager" 
-        ], 
-        image_advtab: true, 
-        toolbar: "sizeselect | fontselect | fontsizeselect | undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect forecolor backcolor | link unlink anchor | image media | print preview code"
-    });
-});
+  $(function() {
+    $('textarea').froalaEditor({
+        height: 500
+    })
+  });
 </script>
 @endsection
 

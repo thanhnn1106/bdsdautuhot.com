@@ -38,7 +38,7 @@ class ProjectInfoController extends Controller
             $validator = Validator::make($dataPost, $rules);
 
             if ($validator->fails()) {
-                return redirect()->route('admin.projects.add')
+                return redirect()->route('admin.projects.info.add')
                             ->withErrors($validator)
                             ->withInput();
             }
@@ -64,7 +64,7 @@ class ProjectInfoController extends Controller
         $project = ProjectInfo::find($projectInfoId);
         if ($project === NULL) {
             $request->session()->flash('error', trans('common.msg_data_not_found'));
-            return redirect(route('admin.projects'));
+            return redirect(route('admin.projects.info'));
         }
 
         $data = array(
@@ -102,12 +102,13 @@ class ProjectInfoController extends Controller
 
         return view('admin.project_info.form', $data);
     }
+
     public function delete(Request $request, $projectId)
     {
         $project = Project::find($projectId);
         if ($project === NULL) {
             $request->session()->flash('error', trans('common.msg_data_not_found'));
-            return redirect(route('admin.projects'));
+            return redirect(route('admin.projects.info'));
         }
 
         $hasDelete = $project->delete();
